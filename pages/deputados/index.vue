@@ -3,7 +3,15 @@
     <b-row>
       <b-col></b-col>
       <b-col>
+        <h2 class="dpTitle">Lista de Deputados</h2>
+      </b-col>
+      <b-col></b-col>
+    </b-row>
+    <b-row>
+      <b-col></b-col>
+      <b-col>
         <b-pagination size="md" :total-rows="513" v-model="currentPage" :per-page="10" />
+        <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Nome do deputado" v-model="nome" />
       </b-col>
       <b-col></b-col>
     </b-row>
@@ -41,13 +49,15 @@ export default {
     return{
       deputados: {},
       links: {},
-      currentPage: 1
+      currentPage: 1,
+      nome: "",
+      nomeUrl:""
     }
   },
   methods:{
     getAllDeputados(){
       let i = this;
-      i.$axios.get("https://dadosabertos.camara.leg.br/api/v2/deputados?itens=10&ordem=ASC&ordenarPor=nome&pagina="+i.currentPage)
+      i.$axios.get("https://dadosabertos.camara.leg.br/api/v2/deputados?itens=10&ordem=ASC&ordenarPor=nome&pagina="+i.currentPage+""+i.nomeUrl)
       .then(
         function (response) {
           if(response.data.dados){
@@ -65,6 +75,10 @@ export default {
   watch: {
     currentPage: function (newPg, oldPg) {
       this.getAllDeputados();
+    },
+    nome: function (newName, oldName) {
+      this.nomeUrl = "&nome="+newName;
+      this.getAllDeputados();
     }
   },
   mounted(){
@@ -79,5 +93,8 @@ export default {
 
 .dpPagination-bottom{
   padding-top: 35px;
+}
+.dpTitle{
+  margin-bottom: 25px;
 }
 </style>
