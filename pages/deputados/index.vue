@@ -47,7 +47,8 @@ export default {
   methods:{
     getAllDeputados(){
       let i = this;
-      i.$axios.get("https://dadosabertos.camara.leg.br/api/v2/deputados?itens=10&ordem=ASC&ordenarPor=nome&pagina="+i.currentPage).then(
+      i.$axios.get("https://dadosabertos.camara.leg.br/api/v2/deputados?itens=10&ordem=ASC&ordenarPor=nome&pagina="+i.currentPage)
+      .then(
         function (response) {
           if(response.data.dados){
             i.deputados = response.data.dados;
@@ -56,7 +57,9 @@ export default {
             });
           }
         }
-      );
+      ).catch(function (err) {
+        console.error("Erro ao encontrar dados dos deputados: " + err);
+      });
     }
   },
   watch: {
