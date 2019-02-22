@@ -17,8 +17,7 @@
     "bootstrap-vue": "^2.0.0-beta",
     "cross-env": "^5.2.0",
     "nodemon": "^1.18.7",
-    "nuxt": "^2.0.0",
-    "querystring": "^0.2.0"
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {}
 }
