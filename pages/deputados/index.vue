@@ -1,20 +1,30 @@
 <template>
   <div>
     <b-row>
-      <b-col></b-col>
-      <b-col>
+      <b-col offset="4">
         <h2 class="dpTitle">Lista de Deputados</h2>
       </b-col>
       <b-col></b-col>
     </b-row>
     <b-row>
-      <b-col></b-col>
-      <b-col>
+      <b-col offset="4">
         <b-pagination size="md" :total-rows="513" v-model="currentPage" :per-page="10" />
-        <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Nome do deputado" v-model="nome" />
       </b-col>
-      <b-col></b-col>
     </b-row>
+    <b-row>
+      <b-col offset="4">
+        <b-button v-b-toggle.collapse1 variant="primary">Toggle Collapse</b-button>
+      </b-col>
+    </b-row>
+    <b-collapse id="collapse1" class="mt-2">
+      <b-row>
+        <b-col></b-col>
+        <b-col>
+          <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Nome do deputado" v-model="nome" />
+        </b-col>
+        <b-col></b-col>
+      </b-row>
+    </b-collapse>
     <b-card-group deck>
       <div class="mt-4" v-for="dp of deputados" v-bind:key="dp.id">
         <b-card no-body class="overflow-hidden" style="width: 445px;">
@@ -34,11 +44,9 @@
       </div>
     </b-card-group>
     <b-row class="dpPagination-bottom">
-      <b-col></b-col>
-      <b-col>
+      <b-col offset="4">
         <b-pagination size="md" :total-rows="513" v-model="currentPage" :per-page="10" />
       </b-col>
-      <b-col></b-col>
     </b-row>
   </div>
 </template>
