@@ -1,6 +1,6 @@
-# webapptodos
+# camaradeputadosbr
 
-> My fantabulous Nuxt.js project
+> Projeto para mostrar os dados dos deputados federais do Brasil.
 
 ## Build Setup
 
