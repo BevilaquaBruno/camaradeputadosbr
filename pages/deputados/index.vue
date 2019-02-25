@@ -38,7 +38,12 @@
         <b-col b-cols="4">
           <b-form-select v-model="partido_selected" :options="partidos" size="sm" />
         </b-col>
-        <b-col cols="7"></b-col>
+        <b-col cols="1">
+          <label for="dpSexo">Sexo: </label>
+        </b-col>
+        <b-col cols="4">
+          <b-form-select v-model="sexo_selected" :options="sexos" size="sm" />
+        </b-col>
       </b-row>
     </b-collapse>
     <div v-if="deputados.length == 0">
@@ -86,7 +91,23 @@ export default {
       siglaUrl:"",
       partido_selected: 0,
       partidos: [],
-      partidoUrl:""
+      partidoUrl:"",
+      sexo_selected: 0,
+      sexos: [
+        {
+          value: 0,
+          text: "Todos os sexos"
+        },
+        {
+          value: "M",
+          text:"Masculino"
+        },
+        {
+          value:"F",
+          text: "Feminino"
+        }
+      ],
+      sexoUrl:""
     }
   },
   methods:{
@@ -160,6 +181,15 @@ export default {
         this.partidoUrl = "";
       }else{
         this.partidoUrl = "&siglaPartido="+newPartido;
+      }
+      this.currentPage = 1;
+      this.getAllDeputados();
+    },
+    sexo_selected: function (newSexo, oldSexo) {
+      if (newSexo == 0) {
+        this.sexoUrl = "";
+      }else{
+        this.sexoUrl = "&siglaSexo="+newSexo;
       }
       this.currentPage = 1;
       this.getAllDeputados();
