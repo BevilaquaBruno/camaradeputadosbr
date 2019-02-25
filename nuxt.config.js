@@ -14,6 +14,7 @@ module.exports = {
     ],
     link: [
       //{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'stylesheet', href: 'https://unicons.iconscout.com/release/v0.0.3/css/unicons.css' }
     ]
   },
 
