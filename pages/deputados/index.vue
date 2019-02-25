@@ -147,12 +147,20 @@ export default {
       this.getAllDeputados();
     },
     sigla_selected: function (newSigla, oldSigla) {
-      this.siglaUrl = "&siglaUf="+newSigla;
+      if (newSigla == 0) {
+        this.siglaUrl = "";
+      }else{
+        this.siglaUrl = "&siglaUf="+newSigla;
+      }
       this.currentPage = 1;
       this.getAllDeputados();
     },
     partido_selected: function (newPartido, oldPartido) {
-      this.partidoUrl = "&siglaPartido="+newPartido;
+      if (newPartido == 0) {
+        this.partidoUrl = "";
+      }else{
+        this.partidoUrl = "&siglaPartido="+newPartido;
+      }
       this.currentPage = 1;
       this.getAllDeputados();
     }
