@@ -8,7 +8,7 @@
     </b-row>
     <b-row>
       <b-col offset="4">
-        <b-pagination size="md" :total-rows="total_rows" v-model="currentPage" :per-page="10" />
+        <!-- <b-pagination size="md" :total-rows="total_rows" v-model="currentPage" :per-page="10" /> -->
       </b-col>
       <b-col>
         <b-button v-b-toggle.collapse1 variant="primary">
@@ -18,31 +18,27 @@
     </b-row>
     <b-collapse id="collapse1" class="mt-2">
       <b-row>
-        <b-col cols="1">
-          <label for="dpNome">Nome: </label>
+        <b-col cols="12" sm="6">
+          <b-form-group id="dpNome" label="Nome:">
+            <b-form-input label id="dpNome" size="sm" class="mr-sm-2" type="text" placeholder="Nome do deputado" v-model="nome" />
+          </b-form-group>
         </b-col>
-        <b-col cols="5">
-          <b-form-input id="dpNome" size="sm" class="mr-sm-2" type="text" placeholder="Nome do deputado" v-model="nome" />
-        </b-col>
-        <b-col cols="1">
-          <label for="dpUf">UF: </label>
-        </b-col>
-        <b-col cols="3">
-          <b-form-select v-model="sigla_selected" :options="siglas" size="sm" />
+        <b-col cols="12" sm="4">
+          <b-form-group id="dpUf" label="UF:">
+            <b-form-select v-model="sigla_selected" :options="siglas" size="sm" />
+          </b-form-group>
         </b-col>
       </b-row>
       <b-row>
-        <b-col cols="1">
-          <label for="dpPartido">Partido: </label>
+        <b-col cols="12" sm="5">
+          <b-form-group id="dpPartido" label="Partido:">
+            <b-form-select v-model="partido_selected" :options="partidos" size="sm" />
+          </b-form-group>
         </b-col>
-        <b-col b-cols="4">
-          <b-form-select v-model="partido_selected" :options="partidos" size="sm" />
-        </b-col>
-        <b-col cols="1">
-          <label for="dpSexo">Sexo: </label>
-        </b-col>
-        <b-col cols="4">
-          <b-form-select v-model="sexo_selected" :options="sexos" size="sm" />
+        <b-col cols="12" sm="5">
+          <b-form-group id="dpSexo" label="Sexo:">
+            <b-form-select v-model="sexo_selected" :options="sexos" size="sm" />
+          </b-form-group>
         </b-col>
       </b-row>
     </b-collapse>
@@ -71,7 +67,7 @@
     </div>
     <b-row class="dpPagination-bottom">
       <b-col offset="4">
-        <b-pagination size="md" :total-rows="total_rows" v-model="currentPage" :per-page="10" />
+        <!-- <b-pagination size="md" :total-rows="total_rows" v-model="currentPage" :per-page="10" /> -->
       </b-col>
     </b-row>
   </div>
@@ -114,7 +110,7 @@ export default {
     getAllDeputados(){
       let i = this;
       i.$axios.setHeader("Accept", "application/json");
-      i.$axios.get("https://dadosabertos.camara.leg.br/api/v2/deputados?itens=10&ordem=ASC&ordenarPor=nome&pagina="+i.currentPage+""+i.nomeUrl+""+i.siglaUrl+""+i.partidoUrl)
+      i.$axios.get("https://dadosabertos.camara.leg.br/api/v2/deputados?itens=10&ordem=ASC&ordenarPor=nome&pagina="+i.currentPage+""+i.nomeUrl+""+i.siglaUrl+""+i.partidoUrl+""+i.sexoUrl)
       .then(
         function (response) {
           if(response.data.dados){

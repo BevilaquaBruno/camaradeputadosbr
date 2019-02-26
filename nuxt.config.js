@@ -51,6 +51,10 @@ module.exports = {
     baseURL: "https://dadosabertos.camara.leg.br/api/v2/"
     // See https://github.com/nuxt-community/axios-module#options
   },
+  bootstrapVue: {
+    bootstrapCSS: true,
+    bootstrapVueCSS: true
+  },
 
   /*
   ** Build configuration
