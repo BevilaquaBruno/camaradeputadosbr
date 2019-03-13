@@ -8,7 +8,7 @@
     </b-row>
     <b-row>
       <b-col offset="4">
-        <!-- <b-pagination size="md" :total-rows="total_rows" v-model="currentPage" :per-page="10" /> -->
+        <b-pagination size="md" :total-rows="total_rows" v-model="currentPage" :per-page="10" />
       </b-col>
       <b-col>
         <b-button v-b-toggle.collapse1 variant="primary">
@@ -51,13 +51,17 @@
           <b-card no-body class="overflow-hidden" style="width: 445px;">
             <b-row no-gutters>
               <b-col md="3">
-                <b-img thumbnail :src="dp.urlFoto" class="rounded-0" />
+                <a :href="'/deputados/'+dp.id">
+                  <b-img thumbnail :src="dp.urlFoto" class="rounded-0" />
+                </a>
               </b-col>
               <b-col md="8">
                 <b-card-body>
-                  <span class="dpName">
-                    {{dp.nome+' - '+dp.siglaPartido+'/'+dp.siglaUf}}
-                  </span>
+                  <nuxt-link :to="'/deputados/'+dp.id">
+                    <span class="dpName">
+                      {{dp.nome+' - '+dp.siglaPartido+'/'+dp.siglaUf}}
+                    </span>
+                  </nuxt-link>
                 </b-card-body>
               </b-col>
             </b-row>
@@ -67,7 +71,7 @@
     </div>
     <b-row class="dpPagination-bottom">
       <b-col offset="4">
-        <!-- <b-pagination size="md" :total-rows="total_rows" v-model="currentPage" :per-page="10" /> -->
+        <b-pagination size="md" :total-rows="total_rows" v-model="currentPage" :per-page="10" />
       </b-col>
     </b-row>
   </div>
