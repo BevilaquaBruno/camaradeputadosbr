@@ -143,7 +143,7 @@ export default {
     },
     getAllSiglasPartidos(){
       let i = this;
-      i.$axios.get("https://dadosabertos.camara.leg.br/api/v2/partidos?ordem=ASC&ordenarPor=sigla")
+      i.$axios.get("https://dadosabertos.camara.leg.br/api/v2/partidos?ordem=ASC&ordenarPor=sigla&itens=100")
       .then(
         function (response) {
           if(response.data.dados){
