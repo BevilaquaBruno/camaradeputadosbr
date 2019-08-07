@@ -7,7 +7,7 @@
             v-bind="{ blank: false, blankColor: '#777', width: 150, height: 150, class: 'm1' }"
             :alt="deputado.nomeCivil">
           </b-img>
-          <div class="h2">{{ deputado.nomeCivil }} - {{ deputado.ultimoStatus.siglaPartido }} / {{ deputado.ultimoStatus.siglaUf }}</div>
+          <div class="h2">{{ deputado.nomeCivil }} -  <nuxt-link :to="'/partidos/'+deputado.ultimoStatus.siglaPartido"> {{ deputado.ultimoStatus.siglaPartido }} </nuxt-link> / {{ deputado.ultimoStatus.siglaUf }}</div>
           <b-row>
             <b-col>
               <b-card
@@ -17,7 +17,7 @@
                 style="max-width: 25rem;max-height: 30rem"
               >
               <b-list-group>
-                <b-list-group-item><strong>CPF:</strong> {{ deputado.cpf }}</b-list-group-item>
+                <b-list-group-item><strong>CPF:</strong> {{ cpf }}</b-list-group-item>
                 <b-list-group-item><strong>Sexo:</strong> {{ sexo }}</b-list-group-item>
                 <b-list-group-item><strong>Nasc:</strong> {{ deputado.municipioNascimento }} - {{ deputado.ufNascimento }}</b-list-group-item>
                 <b-list-group-item><strong>Escolaridade:</strong> {{ deputado.escolaridade }}</b-list-group-item>
@@ -102,6 +102,15 @@ export default {
     nascimento: function () {
       var date = this.deputado.dataNascimento.split('-');
       return (date[2]+'/'+date[1]+'/'+date[0])
+    },
+    cpf: function(){
+      let s, a, b, c, d;
+      s = this.deputado.cpf;
+      a = s.substr(0,3);
+      b = s.substr(3,3);
+      c = s.substr(6,3);
+      d = s.substr(9,2);
+      return  a+'.'+b+'.'+c+'-'+d;
     }
   },
   mounted(){
