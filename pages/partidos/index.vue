@@ -23,7 +23,7 @@
             <b-row no-gutters>
               <b-col md="12">
                 <b-card-body>
-                  <nuxt-link :to="'/partidos/'+pt.sigla">
+                  <nuxt-link :to="'/partidos/'+pt.id">
                     <span class="ptName">
                       {{ pt.nome+' - '+pt.sigla }}
                     </span>
