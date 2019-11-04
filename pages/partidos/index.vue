@@ -54,7 +54,6 @@ export default {
       .then(
         function (response) {
           if(response.data.dados){
-            console.log(response.data.dados);
             i.total_rows = response.data.dados.length;
             i.partidos = response.data.dados;
           }
